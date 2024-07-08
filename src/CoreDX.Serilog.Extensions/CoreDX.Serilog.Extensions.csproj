@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageTags>Serilog Filter</PackageTags>
+    <Description>Extensions for Serilog Filter.</Description>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" />
+  </ItemGroup>
+
+</Project>

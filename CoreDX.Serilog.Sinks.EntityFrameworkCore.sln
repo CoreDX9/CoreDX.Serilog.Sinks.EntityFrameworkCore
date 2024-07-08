@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{8DAD597E-59B8-475B-B502-2CE1DF98336A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		exclusion.dic = exclusion.dic
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{37882D79-D385-45A5-8C46-873A53F8EA71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDX.Serilog.Extensions", "src\CoreDX.Serilog.Extensions\CoreDX.Serilog.Extensions.csproj", "{97099468-0117-4EEE-9572-5430C23F3206}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDX.Serilog.Extensions.Configuration", "src\CoreDX.Serilog.Extensions.Configuration\CoreDX.Serilog.Extensions.Configuration.csproj", "{678E2846-B4B6-41E5-8FD9-901EEA3F7686}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDX.Serilog.Sinks.EntityFrameworkCore", "src\CoreDX.Serilog.Sinks.EntityFrameworkCore\CoreDX.Serilog.Sinks.EntityFrameworkCore.csproj", "{DF1D3C5E-80FF-4F7A-8376-6A722F4D1BC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDX.Serilog.Sinks.EntityFrameworkCore.Models", "src\CoreDX.Serilog.Sinks.EntityFrameworkCore.Models\CoreDX.Serilog.Sinks.EntityFrameworkCore.Models.csproj", "{609FBB17-C823-497E-B789-C5F4755C86CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97099468-0117-4EEE-9572-5430C23F3206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97099468-0117-4EEE-9572-5430C23F3206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97099468-0117-4EEE-9572-5430C23F3206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97099468-0117-4EEE-9572-5430C23F3206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678E2846-B4B6-41E5-8FD9-901EEA3F7686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678E2846-B4B6-41E5-8FD9-901EEA3F7686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678E2846-B4B6-41E5-8FD9-901EEA3F7686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678E2846-B4B6-41E5-8FD9-901EEA3F7686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1D3C5E-80FF-4F7A-8376-6A722F4D1BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1D3C5E-80FF-4F7A-8376-6A722F4D1BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1D3C5E-80FF-4F7A-8376-6A722F4D1BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1D3C5E-80FF-4F7A-8376-6A722F4D1BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{609FBB17-C823-497E-B789-C5F4755C86CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609FBB17-C823-497E-B789-C5F4755C86CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609FBB17-C823-497E-B789-C5F4755C86CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609FBB17-C823-497E-B789-C5F4755C86CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97099468-0117-4EEE-9572-5430C23F3206} = {37882D79-D385-45A5-8C46-873A53F8EA71}
+		{678E2846-B4B6-41E5-8FD9-901EEA3F7686} = {37882D79-D385-45A5-8C46-873A53F8EA71}
+		{DF1D3C5E-80FF-4F7A-8376-6A722F4D1BC2} = {37882D79-D385-45A5-8C46-873A53F8EA71}
+		{609FBB17-C823-497E-B789-C5F4755C86CA} = {37882D79-D385-45A5-8C46-873A53F8EA71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD2D389D-5879-4408-9C09-391BF2DF7C0C}
+	EndGlobalSection
+EndGlobal

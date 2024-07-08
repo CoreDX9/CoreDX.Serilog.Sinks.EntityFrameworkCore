@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageTags>Serilog Sink EntityFrameworkCore</PackageTags>
+    <Description>Serilog sink based on EntityFrameworkCore to persist logs.</Description>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1' or '$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreDX.Serilog.Sinks.EntityFrameworkCore.Models\CoreDX.Serilog.Sinks.EntityFrameworkCore.Models.csproj" />
+  </ItemGroup>
+</Project>
