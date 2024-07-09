@@ -5,6 +5,9 @@ using Serilog.Events;
 
 namespace CoreDX.Serilog.Extensions.Configuration;
 
+/// <summary>
+/// A monitor to watch changes of <see cref="IConfigurationSection"/> and re build log filter.
+/// </summary>
 public class MinimumLevelOverridableSerilogFilterConfigurationMonitor : IDisposable
 {
     private readonly object _locker = new();
@@ -13,14 +16,18 @@ public class MinimumLevelOverridableSerilogFilterConfigurationMonitor : IDisposa
     private Func<LogEvent, bool>? _filter;
     private IDisposable? _configureChangeMonitor;
 
+    /// <summary>
+    /// Get log filter Function.
+    /// </summary>
     public Func<LogEvent, bool> Filter => log => _filter?.Invoke(log) ?? true;
-        //{
-        //    lock (_locker)
-        //    {
-        //        return _filter?.Invoke(log) ?? true;
-        //    }
-        //};
 
+    /// <summary>
+    /// Create an instance with specified configuration path.
+    /// </summary>
+    /// <param name="serviceProvider">The application service provider.</param>
+    /// <param name="configurationPath">The path of configuration section.</param>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentException"></exception>
     public MinimumLevelOverridableSerilogFilterConfigurationMonitor(IServiceProvider serviceProvider, string configurationPath)
     {
         if (serviceProvider is null)
@@ -79,6 +86,7 @@ public class MinimumLevelOverridableSerilogFilterConfigurationMonitor : IDisposa
         }
     }
 
+    /// <inheritdoc />
     public void Dispose()
     {
         _configureChangeMonitor?.Dispose();
