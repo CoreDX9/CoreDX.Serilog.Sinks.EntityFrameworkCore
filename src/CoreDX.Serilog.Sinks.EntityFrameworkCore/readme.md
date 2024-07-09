@@ -18,7 +18,7 @@ public class YourApplicationDbContext : DbContext
         // Add entity type to DbContext with default entity type.
         modelBuilder.UseLogRecord(b =>
         {
-            b.ToTable($"{nameof(YourLogRecord)}s");
+            b.ToTable($"{nameof(LogRecord)}s");
         });
 
         // Add entity type to DbContext with custom entity type based on LogRecord.
@@ -36,7 +36,7 @@ public class YourLogDbContext : DbContext
         // Add entity type to DbContext with default entity type.
         modelBuilder.UseLogRecord(b =>
         {
-            b.ToTable($"{nameof(YourLogRecord)}s", tb => tb.ExcludeFromMigrations());
+            b.ToTable($"{nameof(LogRecord)}s", tb => tb.ExcludeFromMigrations());
         });
 
         // Add entity type to DbContext with custom entity type based on LogRecord.
@@ -87,7 +87,17 @@ public static IHostBuilder CreateHostBuilder(string[] args) => CreateHostBuilder
                                 serviceProvider,
                                 "SerilogFilterExtensions:EntityFrameworkCore"
                             ).Filter)
+                        // using default entity type
                         .WriteTo.EntityFrameworkCore(
+                            serviceProvider.GetRequiredService<IServiceScopeFactory>(),
+                            static sp => sp.GetRequiredService<YourLogDbContext>(),
+                            new()
+                            {
+                                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+                            });
+                        // using custom entity type
+                        .WriteTo.EntityFrameworkCore<YourLogDbContext, YourLogRecord>(
                             serviceProvider.GetRequiredService<IServiceScopeFactory>(),
                             static sp => sp.GetRequiredService<YourLogDbContext>(),
                             new()
