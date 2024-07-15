@@ -72,7 +72,7 @@ services.AddMinimumLevelOverridableSerilogFilterConfigurationMonitorManager();
 
 ### Program
 ``` csharp
-public static IHostBuilder CreateHostBuilder(string[] args) => CreateHostBuilderAdvance(args, null);
+public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .UseSerilog((hostBuilder, serviceProvider, configuration) =>
         {
