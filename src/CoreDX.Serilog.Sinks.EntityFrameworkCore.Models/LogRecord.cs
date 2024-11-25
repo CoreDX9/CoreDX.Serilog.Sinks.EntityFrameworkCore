@@ -4,7 +4,6 @@ namespace CoreDX.Serilog.Sinks.EntityFrameworkCore.Models;
 
 #pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
 public class LogRecord
-
 {
     public virtual long Id { get; set; }
 
