@@ -3,10 +3,10 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <PackageTags>Serilog Filter</PackageTags>
     <Description>Extensions for Serilog Filter.</Description>
-    <PackageReleaseNotes>Update to .NET 9.0 .</PackageReleaseNotes>
+    <PackageReleaseNotes>Update to .NET 10.0 .</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
