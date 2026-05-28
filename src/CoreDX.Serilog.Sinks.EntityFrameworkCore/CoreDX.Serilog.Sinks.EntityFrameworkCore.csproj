@@ -3,10 +3,10 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageVersion>1.2.0</PackageVersion>
+    <PackageVersion>1.2.1</PackageVersion>
     <PackageTags>Serilog Sink EntityFrameworkCore</PackageTags>
     <Description>Serilog sink based on EntityFrameworkCore to persist logs.</Description>
-    <PackageReleaseNotes>Update to .NET 10.0 .</PackageReleaseNotes>
+    <PackageReleaseNotes>Add: Allow to process log records with custom actions.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

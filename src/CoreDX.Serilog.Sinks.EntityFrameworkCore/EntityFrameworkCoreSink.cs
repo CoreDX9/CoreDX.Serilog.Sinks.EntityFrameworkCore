@@ -24,6 +24,7 @@ namespace CoreDX.Serilog.Sinks.EntityFrameworkCore;
 /// <param name="contextFactory"></param>
 /// <param name="serializerOptions"></param>
 /// <param name="formatProvider"></param>
+/// <param name="logRecordAction"></param>
 public class EntityFrameworkCoreSink<TDbContext, TLogRecord>(
     IServiceScopeFactory scopeFactory,
     Func<IServiceProvider, TDbContext>? contextFactory,
@@ -34,7 +35,8 @@ public class EntityFrameworkCoreSink<TDbContext, TLogRecord>(
 #elif NETSTANDARD2_0_OR_GREATER
     JsonSerializerSettings? serializerOptions,
 #endif
-    IFormatProvider? formatProvider = null) : IBatchedLogEventSink
+    IFormatProvider? formatProvider = null,
+    Action<LogEvent, TLogRecord>? logRecordAction = null) : IBatchedLogEventSink
     where TDbContext : DbContext
     where TLogRecord : LogRecord, new()
 {
@@ -111,7 +113,7 @@ public class EntityFrameworkCoreSink<TDbContext, TLogRecord>(
             // ignore
         }
 
-        return new TLogRecord
+        var record = new TLogRecord
         {
             Exception = logEvent.Exception?.ToString(),
             Level = logEvent.Level.ToString(),
@@ -125,6 +127,10 @@ public class EntityFrameworkCoreSink<TDbContext, TLogRecord>(
             TraceId = logEvent.TraceId?.ToHexString(),
             Properties = propertiesValue
         };
+
+        logRecordAction?.Invoke(logEvent, record);
+
+        return record;
 
         string ConvertLogEventToJson(LogEvent logEvent)
         {

@@ -30,6 +30,7 @@ public static class EntityFrameworkCoreSinkConfigurationExtensions
     /// <param name="formatProvider">The string format provider.</param>
     /// <param name="restrictedToMinimumLevel">The restricted to minimum level.</param>
     /// <param name="levelSwitch">The logging level switch.</param>
+    /// <param name="logRecordAction">An <see cref="Action{T1, T1}"/> using to configure log record.</param>
     /// <returns>The <see cref="LoggerConfiguration"/> using to chaind call.</returns>
     public static LoggerConfiguration EntityFrameworkCore<TDbContext>(
         this LoggerSinkConfiguration sinkConfiguration,
@@ -43,7 +44,8 @@ public static class EntityFrameworkCoreSinkConfigurationExtensions
         Action<BatchingOptions>? configureOptions = null,
         IFormatProvider? formatProvider = null,
         LogEventLevel restrictedToMinimumLevel = LogEventLevel.Verbose,
-        LoggingLevelSwitch? levelSwitch = null)
+        LoggingLevelSwitch? levelSwitch = null,
+        Action<LogEvent, LogRecord>? logRecordAction = null)
         where TDbContext : DbContext
     {
         return EntityFrameworkCore<TDbContext, LogRecord>(
@@ -54,7 +56,8 @@ public static class EntityFrameworkCoreSinkConfigurationExtensions
             configureOptions,
             formatProvider,
             restrictedToMinimumLevel,
-            levelSwitch);
+            levelSwitch,
+            logRecordAction);
     }
 
     /// <summary>
@@ -70,6 +73,7 @@ public static class EntityFrameworkCoreSinkConfigurationExtensions
     /// <param name="formatProvider">The string format provider.</param>
     /// <param name="restrictedToMinimumLevel">The restricted to minimum level.</param>
     /// <param name="levelSwitch">The logging level switch.</param>
+    /// <param name="logRecordAction">An <see cref="Action{T1, T2}"/> using to configure log record.</param>
     /// <returns>The <see cref="LoggerConfiguration"/> using to chaind call.</returns>
     public static LoggerConfiguration EntityFrameworkCore<TDbContext, TLogRecord>(
         this LoggerSinkConfiguration sinkConfiguration,
@@ -83,11 +87,12 @@ public static class EntityFrameworkCoreSinkConfigurationExtensions
         Action<BatchingOptions>? configureOptions = null,
         IFormatProvider? formatProvider = null,
         LogEventLevel restrictedToMinimumLevel = LogEventLevel.Verbose,
-        LoggingLevelSwitch? levelSwitch = null)
+        LoggingLevelSwitch? levelSwitch = null,
+        Action<LogEvent, TLogRecord>? logRecordAction = null)
         where TDbContext : DbContext
         where TLogRecord : LogRecord, new()
     {
-        var efCoreSink = new EntityFrameworkCoreSink<TDbContext, TLogRecord>(serviceScopeFactory, contextFactory, serializerOptions, formatProvider);
+        var efCoreSink = new EntityFrameworkCoreSink<TDbContext, TLogRecord>(serviceScopeFactory, contextFactory, serializerOptions, formatProvider, logRecordAction);
         var batchingOptions = new BatchingOptions();
         configureOptions?.Invoke(batchingOptions);
 
